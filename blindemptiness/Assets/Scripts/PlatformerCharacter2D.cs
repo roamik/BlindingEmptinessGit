@@ -87,29 +87,29 @@ namespace UnityStandardAssets._2D
 
             m_Anim.SetBool("Crouch", crouch);
 
-            bool isForward = move > 0 && m_FacingRight;
-            //if(move > 0 )
-            //{
-            //    if(m_FacingRight)
-            //    {
-            //        isForward = true;
-            //    }
-            //    else
-            //    {
-            //        isForward = false;
-            //    }
-            //}
-            //else
-            //{
-            //    if (!m_FacingRight)
-            //    {
-            //        isForward = true;
-            //    }
-            //    else
-            //    {
-            //        isForward = false;
-            //    }
-            //}
+            bool isForward; // move > 0 && m_FacingRight;
+            if (move > 0)
+            {
+                if (m_FacingRight)
+                {
+                    isForward = true;
+                }
+                else
+                {
+                    isForward = false;
+                }
+            }
+            else
+            {
+                if (!m_FacingRight)
+                {
+                    isForward = true;
+                }
+                else
+                {
+                    isForward = false;
+                }
+            }
             m_Anim.SetBool("IsForward", isForward);
 
             
