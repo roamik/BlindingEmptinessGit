@@ -1,0 +1,162 @@
+fileFormatVersion: 2
+guid: a91bf52d7846ad141bce990749fa021e
+timeCreated: 1480259384
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: WinterRifle
+    21300002: FirstAid
+    21300004: ShotgunAmmo
+    21300006: Torchlight
+    21300008: Supplies
+    21300010: LugerAmmo
+    21300012: Luger
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 12
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  buildTargetSettings:
+  - buildTarget: Standalone
+    maxTextureSize: 1024
+    textureFormat: -3
+    compressionQuality: 50
+    allowsAlphaSplitting: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: WinterRifle
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 27
+        width: 20
+        height: 3
+      alignment: 9
+      pivot: {x: 0.15634842, y: 0.47037506}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: FirstAid
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 41
+        width: 8
+        height: 8
+      alignment: 9
+      pivot: {x: 0.5148127, y: 0.36668682}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ShotgunAmmo
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 41
+        width: 8
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Torchlight
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 41
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Supplies
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 41
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: LugerAmmo
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 41
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Luger
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 41
+        width: 6
+        height: 4
+      alignment: 9
+      pivot: {x: 0.2728742, y: 0.41112518}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

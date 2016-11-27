@@ -1,84 +1,138 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System.Collections.Generic;
+using System.Linq;
+using System;
 
 public class Inventory : MonoBehaviour
 {
 
-    public GameObject[] weapons;
-    bool[] weaponAvailable;
+   // public GameObject[] weapons;
+   // bool[] weaponAvailable;
     private Animator anim;
+    private ItemDataBase dataBase;
+    public Item currentItem;
+    public List<Item> inventory = new List<Item>() { };
+    private GameObject arm;
+    private GameObject graphicArm;
+    private SpriteRenderer graphicArmSpriteRenderer;
+
+    public void AddItem(Item item)
+    {
+        inventory.Add(item);
+    }
+
     //public Image weaponImag;
 
-    int currentActiveWeapon; 
+    // int currentActiveWeapon; 
 
-	// Use this for initialization
-	void Start ()
+
+    // Use this for initialization
+    void Start ()
     {
-        weaponAvailable = new bool[weapons.Length];
-
-        for(int i =0; i < weapons.Length; i++)
+        foreach (Transform t in transform)
         {
-            weaponAvailable[i] = false;
+            if (t.name == "Arm")
+            {
+                arm = t.gameObject;
+                foreach (Transform t2 in arm.transform)
+                {
+                    if (t2.name == "GraphArm")
+                    {
+                        graphicArm = t2.gameObject;
+                    }
+
+                }
+
+            }
+     
         }
-        
-        currentActiveWeapon = 0; //0 - is a index of a weapon
-        weaponAvailable[currentActiveWeapon] = true;
+
+        if(graphicArm != null)
+        {
+            graphicArmSpriteRenderer = graphicArm.GetComponent<SpriteRenderer>();
+        }
+        dataBase = GameObject.Find("DataBase").GetComponent<ItemDataBase>();
+        inventory.AddRange(dataBase.items);
+        #region Comented code
+        // weaponAvailable = new bool[weapons.Length];
+
+        //for(int i =0; i < weapons.Length; i++)
+        //{
+        //  //  weaponAvailable[i] = false;
+        //}
+
+        //currentActiveWeapon = 0; //0 - is a index of a weapon
+        //weaponAvailable[currentActiveWeapon] = true;
         /*for (int i = 0; i < weapons.Length; i++)
         {
             weaponAvailable[i] = true;
         }*/
 
-        DeactivateWeapon();
+        //DeactivateWeapon();
 
-        SetWeaponActive(currentActiveWeapon);
-
+        //SetWeaponActive(currentActiveWeapon);
+        #endregion
     }
-	
-	// Update is called once per frame
-	void Update ()
+
+    // Update is called once per frame
+    void Update ()
     {
         //toggle weapons
         if (Input.GetKeyDown(KeyCode.Q))
         {
-          
-                int i;
-                for (i = currentActiveWeapon + 1; i < weapons.Length; i++)
-                {
-                    if (weaponAvailable[i] == true)
-                    {
-                        currentActiveWeapon = i;
-                        SetWeaponActive(currentActiveWeapon);
-                        return;
-                    }
-                }
+            ChangeInventoryItem();
 
-                for (i = 0; i < currentActiveWeapon; i++)
-                {
-                    if (weaponAvailable[i] == true)
-                    {
-                        currentActiveWeapon = i;
-                        SetWeaponActive(currentActiveWeapon);
-                        return;
-                    }
-                }
-          }
-	}
+            #region Coment
+            //int i;
+            //for (i = currentActiveWeapon + 1; i < weapons.Length; i++)
+            //{
+            //    if (weaponAvailable[i] == true)
+            //    {
+            //        currentActiveWeapon = i;
+            //        SetWeaponActive(currentActiveWeapon);
+            //        return;
+            //    }
+            //}
 
-    public void SetWeaponActive(int whichWeapon)
-    {
-        if (!weaponAvailable[whichWeapon]) return;
-        DeactivateWeapon();
-        weapons[whichWeapon].SetActive(true);
+            //for (i = 0; i < currentActiveWeapon; i++)
+            //{
+            //    if (weaponAvailable[i] == true)
+            //    {
+            //        currentActiveWeapon = i;
+            //        SetWeaponActive(currentActiveWeapon);
+            //        return;
+            //    }
+            //}
+            #endregion
+        }
     }
 
-    void DeactivateWeapon() //set all weapons which can be allowed to find, deactivated by default in player inventory
+    void ChangeInventoryItem()
     {
-        for (int i = 0; i < weapons.Length; i++) weapons[i].SetActive(false);
+        if (inventory.Count != 0)
+        {
+            int index = inventory.IndexOf(currentItem);
+            if (inventory.Count == index + 1)
+            {
+
+                currentItem = inventory.FirstOrDefault();
+            }
+            else
+            {
+                currentItem = inventory[index + 1];
+            }
+
+            ChangeArmItem();
+        }
     }
 
-    public void ActivateWeapon(int wichWeapon) // activates picked weapon, so that it is available in the inventory
+    void ChangeArmItem()
     {
-        weaponAvailable[wichWeapon] = true;
+        if (graphicArmSpriteRenderer != null)
+        {
+            graphicArmSpriteRenderer.sprite = currentItem.itemSpite;
+        }
     }
 }
