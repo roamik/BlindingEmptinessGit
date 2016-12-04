@@ -1,15 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 
 [System.Serializable]
-public class ShotgunWeapon : Weapon
+public class ShotgunWeapon: Weapon<ShotgunAmmo>
 {
-    public List<ShotgunAmmo> ammo = new List<ShotgunAmmo>() { };
-
-    public ShotgunWeapon(string itemSpritePath, string itemSpriteName)
-       :base (itemSpritePath,itemSpriteName)
+    public override void AddToInventory(ref List<Item> inventory)
     {
-
+        this.temp = DateTime.Now.Ticks.ToString();
+        base.AddToInventory(ref inventory);
     }
 }

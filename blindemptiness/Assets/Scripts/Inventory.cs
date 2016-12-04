@@ -4,135 +4,181 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using System.Linq;
 using System;
+using UnityStandardAssets._2D;
 
+[System.Serializable]
 public class Inventory : MonoBehaviour
 {
 
-   // public GameObject[] weapons;
-   // bool[] weaponAvailable;
+   
     private Animator anim;
     private ItemDataBase dataBase;
     public Item currentItem;
+    public int currentIndex;
     public List<Item> inventory = new List<Item>() { };
     private GameObject arm;
     private GameObject graphicArm;
     private SpriteRenderer graphicArmSpriteRenderer;
+    private float nextFire;
+    
 
     public void AddItem(Item item)
     {
-        inventory.Add(item);
+        item.AddToInventory(ref inventory);
+        //item.temp = DateTime.Now.Ticks.ToString();
+        //inventory.Add(Item.DeepClone(item));
     }
 
-    //public Image weaponImag;
+    public List<AmmoContainerBase> GetAllContainers(int id )
+    {
+        var allContainers = inventory.Where(d => d !=null && d.id == id);
+        if(allContainers != null && allContainers.Count() != 0)
+        {
+            var allBaseContainers = allContainers.Select(g => g as AmmoContainerBase).ToList();
+            if (allBaseContainers != null && allBaseContainers.Count != 0)
+            {
+                return allBaseContainers;
+            }
+            else
+            {
+                return null;
+            }
+        }
+        else
+        {
+            return null;
+        }
+    }
+    
 
-    // int currentActiveWeapon; 
 
 
     // Use this for initialization
-    void Start ()
+    void Start()
     {
+        nextFire = Time.time;
+        dataBase = GameObject.Find("DataBase").GetComponent<ItemDataBase>();
+        //inventory.AddRange(dataBase.items);
         foreach (Transform t in transform)
         {
-            if (t.name == "Arm")
+            if (t.name == "ArmRight")
             {
-                arm = t.gameObject;
-                foreach (Transform t2 in arm.transform)
+
+                foreach (Transform t2 in t.transform)
                 {
-                    if (t2.name == "GraphArm")
+                    if (t2.name == "Forearm")
                     {
-                        graphicArm = t2.gameObject;
+                        foreach (Transform t3 in t2.transform)
+                        {
+                            if (t3.name == "GraphArm")
+                            {
+                                graphicArm = t3.gameObject;
+                            }
+
+                        }
                     }
 
                 }
-
             }
-     
-        }
 
+        }
+    
         if(graphicArm != null)
         {
             graphicArmSpriteRenderer = graphicArm.GetComponent<SpriteRenderer>();
         }
-        dataBase = GameObject.Find("DataBase").GetComponent<ItemDataBase>();
-        inventory.AddRange(dataBase.items);
-        #region Comented code
-        // weaponAvailable = new bool[weapons.Length];
-
-        //for(int i =0; i < weapons.Length; i++)
-        //{
-        //  //  weaponAvailable[i] = false;
-        //}
-
-        //currentActiveWeapon = 0; //0 - is a index of a weapon
-        //weaponAvailable[currentActiveWeapon] = true;
-        /*for (int i = 0; i < weapons.Length; i++)
-        {
-            weaponAvailable[i] = true;
-        }*/
-
-        //DeactivateWeapon();
-
-        //SetWeaponActive(currentActiveWeapon);
-        #endregion
+        
+       
     }
 
     // Update is called once per frame
     void Update ()
     {
+        CleanInventory();
         //toggle weapons
         if (Input.GetKeyDown(KeyCode.Q))
         {
             ChangeInventoryItem();
-
-            #region Coment
-            //int i;
-            //for (i = currentActiveWeapon + 1; i < weapons.Length; i++)
-            //{
-            //    if (weaponAvailable[i] == true)
-            //    {
-            //        currentActiveWeapon = i;
-            //        SetWeaponActive(currentActiveWeapon);
-            //        return;
-            //    }
-            //}
-
-            //for (i = 0; i < currentActiveWeapon; i++)
-            //{
-            //    if (weaponAvailable[i] == true)
-            //    {
-            //        currentActiveWeapon = i;
-            //        SetWeaponActive(currentActiveWeapon);
-            //        return;
-            //    }
-            //}
-            #endregion
         }
+        if(Input.GetKeyDown(KeyCode.O))
+        {
+            foreach (Item item in inventory)
+            {
+               Debug.Log(item.ToString());
+            }
+        }
+        if (Input.GetButton("Fire1")&& nextFire < Time.time)
+        {
+            if(currentItem != null && currentItem is WeaponBase)
+            {            
+                (currentItem as WeaponBase).Fire().Fire(!GetComponent<PlatformerCharacter2D>().m_FacingRight);
+                nextFire = Time.time + (currentItem as WeaponBase).fireDelay;
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            if (currentItem != null && currentItem is WeaponBase)
+            {
+                
+                Inventory instance = this;
+                (currentItem as WeaponBase).Reload(ref instance, ref inventory);
+            }
+        }
+        
     }
 
     void ChangeInventoryItem()
     {
+        anim = GetComponent<Animator>();
         if (inventory.Count != 0)
         {
+            
             int index = inventory.IndexOf(currentItem);
-            if (inventory.Count == index + 1)
+            
+            if (inventory.Count == currentIndex + 1)
             {
-
-                currentItem = inventory.FirstOrDefault();
+                
+                currentItem = null;
+                currentIndex = -1;
             }
             else
             {
-                currentItem = inventory[index + 1];
+                currentItem = inventory[currentIndex + 1];
+                currentIndex++;
             }
 
             ChangeArmItem();
+            int currentItemId = currentItem != null ? currentItem.id : -1;
+            anim.SetInteger("ItemId", currentItemId);
         }
+
     }
 
     void ChangeArmItem()
     {
         if (graphicArmSpriteRenderer != null)
         {
-            graphicArmSpriteRenderer.sprite = currentItem.itemSpite;
+            
+            if(currentItem == null || currentItem.itemSprite == null)
+            {
+                graphicArmSpriteRenderer.sprite = null;
+            }
+            else
+            {
+                graphicArmSpriteRenderer.sprite = inventory[currentIndex].itemSprite.ItemSprite();
+            }
+        }
+    }
+
+    void CleanInventory()
+    {
+        foreach (Item item in inventory)
+        {
+            if(item == null)
+            {
+                inventory.Remove(item);
+                break;
+            }
         }
     }
 }
