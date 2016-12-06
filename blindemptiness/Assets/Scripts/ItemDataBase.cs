@@ -14,7 +14,7 @@ public class ItemDataBase : MonoBehaviour
         {
             bulletDamage = 2f,
             bulletMass = 0.1f,
-            bulletSpeed = 2f,
+            bulletSpeed = 4f,
             bulletDispersion = 45f,
             itemSprite = new ItemImage("Sprites/", "Shotgun_Bullet"),
         };
@@ -64,7 +64,7 @@ public class ItemDataBase : MonoBehaviour
         {
             bulletDamage = 3f,
             bulletMass = 0.1f,
-            bulletSpeed = 5f,
+            bulletSpeed = 6f,
             bulletDispersion = 5f,
             itemSprite = new ItemImage("Sprites/", "Luger_Bullet"),
         };
