@@ -107,7 +107,7 @@ public class Inventory : MonoBehaviour
                Debug.Log(item.ToString());
             }
         }
-        if (Input.GetButton("Fire1")&& nextFire < Time.time)
+        if (Input.GetKeyDown(KeyCode.Mouse0)&& nextFire < Time.time)
         {
             if(currentItem != null && currentItem is WeaponBase)
             {            

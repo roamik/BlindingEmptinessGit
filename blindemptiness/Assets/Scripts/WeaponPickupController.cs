@@ -30,7 +30,5 @@ public class WeaponPickupController : MonoBehaviour
             Destroy(transform.root.gameObject);
             AudioSource.PlayClipAtPoint(pickupClip, transform.position, 10000f);
         }
-          
-        
     }
 }

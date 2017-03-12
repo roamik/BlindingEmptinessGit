@@ -17,6 +17,7 @@ public class ArmToMouse : MonoBehaviour
 
     void Start()
     {
+        //hitPoint = GetComponent
         p_Script = GetComponent<UnityStandardAssets._2D.PlatformerCharacter2D>();
         anim = GetComponent<Animator>();
         direction = true;
@@ -29,7 +30,6 @@ public class ArmToMouse : MonoBehaviour
 
         //rotation
         Vector2 mousePos = Input.mousePosition;
-        // mousePos.z = 0f;
         //Debug.Log(mousePos + "");
 
 
@@ -131,10 +131,9 @@ public class ArmToMouse : MonoBehaviour
                 Flip();
             }
         }
-        // transform.rotation = Quaternion.Euler(new Vector3(0, 0, limitedAngle + posOffset)); //Rotating!
+        
         anim.SetFloat("ArmAngle",blendAngle );
-        //Gizmos.DrawLine(transform.position, new Vector3(0, 0, limitedAngle + posOffset));                                                                                 //transform.rotation = Quaternion.Lerp(from.rotation, to.rotation, Time.deltaTime * speed);
-             Debug.DrawRay(transform.position, mousePos);                                                                           //from = transform;
+        Debug.DrawRay(transform.position, mousePos);
     }
 
     void Flip()
