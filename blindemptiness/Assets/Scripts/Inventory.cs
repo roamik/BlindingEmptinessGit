@@ -130,25 +130,23 @@ public class Inventory : MonoBehaviour
     void ChangeInventoryItem()
     {
         anim = GetComponent<Animator>();
-        if (inventory.Count != 0)
+        var weaponInventory = inventory.Where(element => element is WeaponBase).ToList();
+        if (weaponInventory.Count != 0)
         {
+            int index = weaponInventory.IndexOf(currentItem);
             
-            int index = inventory.IndexOf(currentItem);
-            
-            if (inventory.Count == currentIndex + 1)
+            if (weaponInventory.Count == currentIndex + 1)
             {
-                
-                currentItem = null;
-                currentIndex = -1;
+                currentIndex = 0;
+                currentItem = weaponInventory[currentIndex];
             }
             else
             {
-                currentItem = inventory[currentIndex + 1];
+                currentItem = weaponInventory[currentIndex + 1];
                 currentIndex++;
             }
-
             ChangeArmItem();
-            int currentItemId = currentItem != null ? currentItem.id : -1;
+            int currentItemId = currentItem != null ? currentItem.id : 0;
             anim.SetInteger("ItemId", currentItemId);
         }
 
@@ -158,14 +156,13 @@ public class Inventory : MonoBehaviour
     {
         if (graphicArmSpriteRenderer != null)
         {
-            
             if(currentItem == null || currentItem.itemSprite == null)
             {
                 graphicArmSpriteRenderer.sprite = null;
             }
             else
             {
-                graphicArmSpriteRenderer.sprite = inventory[currentIndex].itemSprite.ItemSprite();
+                graphicArmSpriteRenderer.sprite = currentItem.itemSprite.ItemSprite();
             }
         }
     }

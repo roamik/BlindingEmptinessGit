@@ -86,8 +86,8 @@ public class ItemDataBase : MonoBehaviour
         var clipRifleMagazine = new AmmoContainer<RifleAmmo>()
         {
             id = 3,
-            maxCount = 10000,
-            ammo = new RifleAmmo[10000].Select(c => c = rifleAmmo).ToList()
+            maxCount = 10,
+            ammo = new RifleAmmo[10].Select(c => c = rifleAmmo).ToList()
         };
 
         var winterRifle = new RifleWeapon
@@ -117,11 +117,6 @@ public class ItemDataBase : MonoBehaviour
 	void Start ()
     {
         LoadItems();
-	
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+
 }
