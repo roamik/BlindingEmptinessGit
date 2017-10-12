@@ -2,9 +2,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using System;
+using Assets.Scripts;
 
 [System.Serializable]
-public abstract class WeaponBase : Item
+public abstract class WeaponBase : Item, IVisible
 {
     public abstract int Id
     {

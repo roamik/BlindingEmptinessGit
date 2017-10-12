@@ -21,8 +21,6 @@ namespace UnityStandardAssets._2D
         private Animator m_Anim;            // Reference to the player's animator component.
         private Rigidbody2D m_Rigidbody2D;
         public bool m_FacingRight = true;  // For determining which way the player is currently facing.
-        //public bool m_FacingLeft = false;
-       //public int rifle, medkit; //all objects that player can carry in his inventory
 
         public ArmToMouse _Arm;
 
@@ -54,21 +52,6 @@ namespace UnityStandardAssets._2D
             m_Anim.SetFloat("vSpeed", m_Rigidbody2D.velocity.y);
         }
 
-        /*void OnTriggerEnter2D(Collider2D other)
-        {
-            if (other.gameObject.CompareTag("Rifle"))
-            {
-                other.gameObject.SetActive(false);
-                rifle = rifle + 1;
-            }
-            else if (other.gameObject.CompareTag("Medkit"))
-            {
-                other.gameObject.SetActive(false);
-                medkit = medkit + 1;
-            }
-        }*/
-
-
         public void Move(float move, bool crouch, bool jump)
         {
             // If crouching, check to see if the character can stand up
@@ -79,9 +62,7 @@ namespace UnityStandardAssets._2D
                 {
                     crouch = true;
                 }
-            }
-
-          
+            }         
 
             // Set whether or not the character is crouching in the animator
 
@@ -111,9 +92,7 @@ namespace UnityStandardAssets._2D
                 }
             }
             m_Anim.SetBool("IsForward", isForward);
-
-            
-            
+ 
             //only control the player if grounded or airControl is turned on
             if (m_Grounded || m_AirControl)
             {
@@ -153,10 +132,6 @@ namespace UnityStandardAssets._2D
                 m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
             }
         }
-
-
-       
-
 
         public void Flipp()
         {

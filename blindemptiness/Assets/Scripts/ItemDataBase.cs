@@ -10,18 +10,21 @@ public class ItemDataBase : MonoBehaviour
     void LoadItems()
     {
         #region Shotgun
+
         var shotgunBullet = new ShotgunBullet()
         {
             bulletDamage = 2f,
             bulletMass = 0.1f,
             bulletSpeed = 4f,
             bulletDispersion = 45f,
-            itemSprite = new ItemImage("Sprites/", "Shotgun_Bullet"),
+            itemSprite = new ItemImage("Sprites/", "Shotgun_Bullet")
         };
+
         var shotgunShell = new Shell()
         {
             itemSprite = new ItemImage("Sprites/", "Shotgun_Shell"),
         };
+
         var shotgunAmmo = new ShotgunAmmo()
         {
             damageCoefficient = 1.2f,
@@ -37,7 +40,7 @@ public class ItemDataBase : MonoBehaviour
         {
             id = 4,
             maxCount = 10000,
-            ammo = new ShotgunAmmo[10000].Select(c => c = shotgunAmmo).ToList()         
+            ammo = new ShotgunAmmo[10000].Select(c => c = shotgunAmmo).ToList()       
         };
 
         var shotgunAmmoContainer = new AmmoContainer<ShotgunAmmo>()
@@ -45,10 +48,11 @@ public class ItemDataBase : MonoBehaviour
             itemSprite = new ItemImage("Sprites/", "ShotgunAmmo"),
             id = 4,
             name = "Shotgun Ammo",
-            description = "Fucking Bullets",
+            description = "Bullets for your shotgun",
             maxCount = 10,
             ammo = new ShotgunAmmo[10].Select(c => c = shotgunAmmo).ToList()
         };
+
         var shotgun = new ShotgunWeapon
         {
             id = 2,
@@ -59,7 +63,9 @@ public class ItemDataBase : MonoBehaviour
             fireDelay = 0.6f
         };
         #endregion
+
         #region Rifle
+
         var rifleBullet = new Bullet()
         {
             bulletDamage = 3f,
@@ -68,10 +74,12 @@ public class ItemDataBase : MonoBehaviour
             bulletDispersion = 5f,
             itemSprite = new ItemImage("Sprites/", "Luger_Bullet"),
         };
+
         var rifleShell = new Shell()
         {
             itemSprite = new ItemImage("Sprites/", "Luger_Shell"),
         };
+
         var rifleAmmo = new RifleAmmo()
         {
             damageCoefficient = 1.2f,
@@ -105,11 +113,12 @@ public class ItemDataBase : MonoBehaviour
             itemSprite = new ItemImage("Sprites/", "LugerAmmo"),
             id = 3,
             name = "Rifle Ammo",
-            description = "Fucking Bullets",
+            description = "Rifle bullets",
             maxCount = 20,
             ammo = new RifleAmmo[20].Select(c => c = rifleAmmo).ToList()
         };
         #endregion
+
         items.AddRange(new List<Item>() { winterRifle, rifleAmmoContainer, shotgun, shotgunAmmoContainer });
     }
 
@@ -117,7 +126,6 @@ public class ItemDataBase : MonoBehaviour
 	void Start ()
     {
         LoadItems();
-	
 	}
 	
 	// Update is called once per frame

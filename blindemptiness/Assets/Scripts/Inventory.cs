@@ -5,12 +5,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System;
 using UnityStandardAssets._2D;
+using Assets.Scripts;
 
 [System.Serializable]
 public class Inventory : MonoBehaviour
 {
+    public IEnumerable<Item> VisibleInventory { get { return inventory.Where(i => i is IVisible); } }
+    public IEnumerable<Item> Containers { get { return inventory.Where(i => i is AmmoContainerBase); } }
 
-   
     private Animator anim;
     private ItemDataBase dataBase;
     public Item currentItem;
@@ -24,9 +26,9 @@ public class Inventory : MonoBehaviour
 
     public void AddItem(Item item)
     {
-        item.AddToInventory(ref inventory);
+        //item.AddToInventory(ref inventory);
         //item.temp = DateTime.Now.Ticks.ToString();
-        //inventory.Add(Item.DeepClone(item));
+        inventory.Add(item);
     }
 
     public List<AmmoContainerBase> GetAllContainers(int id )
@@ -49,9 +51,6 @@ public class Inventory : MonoBehaviour
             return null;
         }
     }
-    
-
-
 
     // Use this for initialization
     void Start()
@@ -87,8 +86,6 @@ public class Inventory : MonoBehaviour
         {
             graphicArmSpriteRenderer = graphicArm.GetComponent<SpriteRenderer>();
         }
-        
-       
     }
 
     // Update is called once per frame
@@ -118,8 +115,7 @@ public class Inventory : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             if (currentItem != null && currentItem is WeaponBase)
-            {
-                
+            {           
                 Inventory instance = this;
                 (currentItem as WeaponBase).Reload(ref instance, ref inventory);
             }
@@ -130,28 +126,25 @@ public class Inventory : MonoBehaviour
     void ChangeInventoryItem()
     {
         anim = GetComponent<Animator>();
-        if (inventory.Count != 0)
-        {
-            
-            int index = inventory.IndexOf(currentItem);
-            
-            if (inventory.Count == currentIndex + 1)
-            {
-                
-                currentItem = null;
-                currentIndex = -1;
-            }
-            else
-            {
-                currentItem = inventory[currentIndex + 1];
-                currentIndex++;
-            }
 
-            ChangeArmItem();
-            int currentItemId = currentItem != null ? currentItem.id : -1;
-            anim.SetInteger("ItemId", currentItemId);
-        }
+            if (VisibleInventory.Count() != 0)
+            {
 
+                if (VisibleInventory.Count() == currentIndex + 1)
+                {
+                    currentItem = null;
+                    currentIndex = -1;
+                }
+                else
+                {
+                    currentItem = VisibleInventory.ElementAt(currentIndex + 1);
+                    currentIndex++;
+                }
+
+                ChangeArmItem();
+                int currentItemId = currentItem != null ? currentItem.id : -1;
+                anim.SetInteger("ItemId", currentItemId);
+            }
     }
 
     void ChangeArmItem()
@@ -165,7 +158,7 @@ public class Inventory : MonoBehaviour
             }
             else
             {
-                graphicArmSpriteRenderer.sprite = inventory[currentIndex].itemSprite.ItemSprite();
+                graphicArmSpriteRenderer.sprite = VisibleInventory.ElementAt(currentIndex).itemSprite.ItemSprite();
             }
         }
     }

@@ -4,15 +4,13 @@ using System.Collections;
 public class ArmToMouse : MonoBehaviour
 
 {
-    public Transform hitPoint;
+    //public Transform hitPoint;
+    public const float FLIPOFFSET = 30f;
     public bool direction;
     public UnityStandardAssets._2D.PlatformerCharacter2D p_Script;
-    //public Camera cam;
     public int posOffset;
     private Animator anim;
-   //public Transform from;
-   //public Transform to;
-    public float speed = 1f;
+
     
 
     void Start()
@@ -20,29 +18,19 @@ public class ArmToMouse : MonoBehaviour
         p_Script = GetComponent<UnityStandardAssets._2D.PlatformerCharacter2D>();
         anim = GetComponent<Animator>();
         direction = true;
-        //from = transform;
-        //to = transform;
     }
 
     void Update()
     {
-
         //rotation
         Vector2 mousePos = Input.mousePosition;
-        // mousePos.z = 0f;
-        //Debug.Log(mousePos + "");
-
 
         Vector3 objectPos = Camera.main.WorldToScreenPoint(transform.position);
 
         mousePos.x = mousePos.x - objectPos.x;
         mousePos.y = mousePos.y - objectPos.y;
 
-
-
         float angle = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg;
-
-        //Debug.Log(angle + "");
 
         if (direction == true) { posOffset = 0; }
         if (direction == false) { posOffset = 180; }
@@ -60,22 +48,22 @@ public class ArmToMouse : MonoBehaviour
             if (angle <= angleLimit && angle > 0f + angleOffset)
             {
                 blendAngle = angle / angleLimit;
-                //Debug.Log(blendAngle + "    1");
+                Debug.Log(blendAngle + "    1");
             }
             else if (angle < 0f - angleOffset && angle >= -angleLimit)
             {
                 blendAngle = angle / angleLimit;
-                //Debug.Log(blendAngle + "    4");
+                Debug.Log(blendAngle + "    4");
             }
             else if (angle < 180f - angleOffset && angle >= flipAngleLimit)
             {
                 blendAngle = (angleLimit - (angle - flipAngleLimit)) / angleLimit;
-                //Debug.Log(blendAngle + "    2");
+                Debug.Log(blendAngle + "    2");
             }
             else if (angle > -180f + angleOffset && angle <= -flipAngleLimit)
             {
                 blendAngle = (angleLimit + (angle + flipAngleLimit)) / -angleLimit;
-                //Debug.Log(blendAngle + "    3");
+                Debug.Log(blendAngle + "    3");
             }
             else
             {
@@ -108,50 +96,50 @@ public class ArmToMouse : MonoBehaviour
 
         }
 
-
-
-        if (angle >= 0f && angle <= 90f || angle <= 0f && angle >= -90f)
+        if (Vector2.Distance(mousePos, transform.position) > 32f)
         {
-            if (direction == false)
-
+            if (angle >= 0f + FLIPOFFSET && angle <= 90f - FLIPOFFSET || angle <= 0f - FLIPOFFSET && angle >= -90f + FLIPOFFSET)
             {
-                direction = true;
+                if (direction == false)
 
-                Flip();
+                {
+                    direction = true;
+
+                    Flip();
+                }
             }
-        }
 
-        if (angle >= 90f && angle <= 180f || angle <= -90f && angle >= -180f)
-        {
-            if (direction == true)
-
+            if (angle >= 90f - FLIPOFFSET && angle <= 180f - FLIPOFFSET || angle <= -90f + FLIPOFFSET && angle >= -180f - FLIPOFFSET)
             {
-                direction = false;
+                if (direction == true)
 
-                Flip();
+                {
+                    direction = false;
+
+                    Flip();
+                }
             }
         }
         // transform.rotation = Quaternion.Euler(new Vector3(0, 0, limitedAngle + posOffset)); //Rotating!
         anim.SetFloat("ArmAngle",blendAngle );
         //Gizmos.DrawLine(transform.position, new Vector3(0, 0, limitedAngle + posOffset));                                                                                 //transform.rotation = Quaternion.Lerp(from.rotation, to.rotation, Time.deltaTime * speed);
-             Debug.DrawRay(transform.position, mousePos);                                                                           //from = transform;
+             Debug.DrawRay(transform.position, mousePos);//from = transform;
+       // Debug.Log(Vector2.Distance(mousePos, transform.position));
+    }
+
+    private void OnDrawGizmos()
+    {        
+        Gizmos.DrawWireSphere(transform.position, 1f);
+        
     }
 
     void Flip()
     {
         if (direction == false && p_Script.m_FacingRight == true || direction == true && p_Script.m_FacingRight == false)
 
-        { p_Script.Flipp(); }
-
-        hitPoint.Rotate(Vector3.forward * 180);
-
-        Vector3 theScale = transform.localScale;
-
-        theScale.x *= -1;
-
-        transform.localScale = theScale;
-
-
+        {
+            p_Script.Flipp();
+        }
     }
 
 }

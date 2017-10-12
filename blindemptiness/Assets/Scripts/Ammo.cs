@@ -11,7 +11,7 @@ public class Ammo : Item
     public List <Bullet> bullets;
     public Shell shell;
     public float ammoDispersion = 0f;
-    
+
 
     public float damage
     {
@@ -26,7 +26,8 @@ public class Ammo : Item
         GameObject bulletPrefab = Resources.Load("Prefabs/bulletPrefab") as GameObject;
         GameObject bulletSpawner = GameObject.Find("bulletSpawner");
         GameObject shellSpawner = GameObject.Find("shellSpawner");
-        List<GameObject> bulletsGameObjects = new List<GameObject>();   
+        List<GameObject> bulletsGameObjects = new List<GameObject>();
+
         foreach(Bullet bullet in bullets)
         {
             //var rigidBody = bulletPrefab.GetComponent<Rigidbody2D>();

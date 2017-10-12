@@ -4,8 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 [System.Serializable]
-public class AmmoContainer<T> : AmmoContainerBase
-    where T : Ammo
+public class AmmoContainer<T> : AmmoContainerBase where T : Ammo
 {
     public List<T> ammo = new List<T>() { };
     public int maxCount;
@@ -19,7 +18,6 @@ public class AmmoContainer<T> : AmmoContainerBase
    
     public virtual AmmoContainer<T> Merge(AmmoContainer<T> container)
     {
-
         if (container.Count + this.Count > this.maxCount && Count != maxCount)
         {
             int takeCount = this.maxCount - this.Count;
