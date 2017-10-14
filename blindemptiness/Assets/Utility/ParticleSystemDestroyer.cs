@@ -23,9 +23,9 @@ namespace UnityStandardAssets.Utility
             var systems = GetComponentsInChildren<ParticleSystem>();
 
             // find out the maximum lifetime of any particles in this effect
-            foreach (var system in systems)
+            foreach (var item in systems)
             {
-                m_MaxLifetime = Mathf.Max(system.startLifetime, m_MaxLifetime);
+                m_MaxLifetime = Mathf.Max(item.startLifetime, m_MaxLifetime);
             }
 
             // wait for random duration

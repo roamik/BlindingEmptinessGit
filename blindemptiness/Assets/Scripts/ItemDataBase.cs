@@ -59,8 +59,9 @@ public class ItemDataBase : MonoBehaviour
             name = "Shotgun",
             description = "A shotgun!",
             ammo = clipShotgunMagazine,
+            fireDelay = 0.6f,
             itemSprite = new ItemImage("Sprites/", "DoubleBarrel"),
-            fireDelay = 0.6f
+            FireSound = new ItemSound("Sound/", "shotgunFire")
         };
         #endregion
 
@@ -105,6 +106,7 @@ public class ItemDataBase : MonoBehaviour
             description = "A rifle used in extra cold regions!",
             ammo = clipRifleMagazine,
             itemSprite = new ItemImage("Sprites/", "WinterRifle"),
+            FireSound = new ItemSound("Sound/", "shotgunFire"),
             fireDelay = 1f
         };
 

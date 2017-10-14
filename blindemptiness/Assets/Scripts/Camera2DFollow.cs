@@ -48,6 +48,8 @@ namespace UnityStandardAssets._2D
             transform.position = newPos;
 
             m_LastTargetPosition = target.position;
+
+            Debug.Log(Vector2.Distance(target.position, transform.position));
         }
     }
 }

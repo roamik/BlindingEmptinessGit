@@ -12,8 +12,8 @@ public class WeaponPickupController : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-        
-        dataBase = GameObject.Find("DataBase").GetComponent<ItemDataBase>();
+
+        dataBase = GameObject.Find("GameHandlers").GetComponentInChildren<ItemDataBase>();
         item = new Item();
         item = dataBase.items.Find(c => c.id == id);
         Debug.Log(gameObject.name + "ammo = " + item.ToString());
@@ -27,7 +27,7 @@ public class WeaponPickupController : MonoBehaviour
        if (other.tag=="Player")
         {
             other.gameObject.GetComponent<Inventory>().AddItem(Item.DeepClone(item));
-            Destroy(transform.root.gameObject);
+            Destroy(transform.gameObject);
             AudioSource.PlayClipAtPoint(pickupClip, transform.position, 10000f);
         }
           

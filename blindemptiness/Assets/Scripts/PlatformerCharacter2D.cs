@@ -24,6 +24,9 @@ namespace UnityStandardAssets._2D
 
         public ArmToMouse _Arm;
 
+        public delegate void PlayerFlipEventHandler(object sender, EventArgs e);
+        public event PlayerFlipEventHandler OnFlip;
+
         private void Awake()
         {
             // Setting up references.
@@ -142,6 +145,11 @@ namespace UnityStandardAssets._2D
             Vector3 theScale = transform.localScale;
             theScale.x *= -1;
             transform.localScale = theScale;
+            
+            if(OnFlip != null)
+            {
+                OnFlip(m_FacingRight, EventArgs.Empty);
+            }
         }
     }
 }

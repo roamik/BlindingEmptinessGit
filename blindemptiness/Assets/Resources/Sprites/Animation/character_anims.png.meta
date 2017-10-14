@@ -1,41 +1,41 @@
 fileFormatVersion: 2
 guid: b2b29f464d4b59f42a2fc7f4ddcca180
-timeCreated: 1507814820
+timeCreated: 1507846363
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: character_anims_0
-    21300002: character_anims_1
-    21300004: character_anims_2
-    21300006: character_anims_3
-    21300008: character_anims_4
-    21300010: character_anims_5
-    21300012: character_anims_6
-    21300014: character_anims_7
-    21300016: character_anims_8
-    21300018: character_anims_9
-    21300020: character_anims_10
-    21300022: character_anims_11
-    21300024: character_anims_12
-    21300026: character_anims_13
-    21300028: character_anims_14
-    21300030: character_anims_15
-    21300032: character_anims_16
-    21300034: character_anims_17
-    21300036: character_anims_18
-    21300038: character_anims_19
-    21300040: character_anims_20
-    21300042: character_anims_21
-    21300044: character_anims_22
-    21300046: character_anims_23
-    21300048: character_anims_24
-    21300050: character_anims_25
-    21300052: character_anims_26
-    21300054: character_anims_27
-    21300056: character_anims_28
-    21300058: character_anims_29
-    21300060: character_anims_30
-    21300062: character_anims_31
+    21300000: character_idle_0
+    21300002: character_walk_0
+    21300004: character_run_0
+    21300006: character_weaponRun_0
+    21300008: character_idle_1
+    21300010: character_walk_1
+    21300012: character_run_1
+    21300014: character_weaponRun_1
+    21300016: character_idle_2
+    21300018: character_walk_2
+    21300020: character_run_2
+    21300022: character_weaponRun_2
+    21300024: character_idle_3
+    21300026: character_walk_3
+    21300028: character_run_3
+    21300030: character_weaponRun_3
+    21300032: character_idle_4
+    21300034: character_walk_4
+    21300036: character_run_4
+    21300038: character_weaponRun_4
+    21300040: character_idle_5
+    21300042: character_walk_5
+    21300044: character_run_5
+    21300046: character_weaponRun_5
+    21300048: character_idle_6
+    21300050: character_walk_6
+    21300052: character_run_6
+    21300054: character_weaponRun_6
+    21300056: character_idle_7
+    21300058: character_walk_7
+    21300060: character_run_7
+    21300062: character_weaponRun_7
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -102,20 +102,20 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: character_anims_0
+      name: character_idle_0
       rect:
         serializedVersion: 2
-        x: 3
+        x: 2
         y: 218
-        width: 11
+        width: 14
         height: 23
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: character_anims_1
+      name: character_walk_0
       rect:
         serializedVersion: 2
         x: 28
@@ -123,25 +123,25 @@ TextureImporter:
         width: 11
         height: 23
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: character_anims_2
+      name: character_run_0
       rect:
         serializedVersion: 2
-        x: 55
+        x: 52
         y: 218
-        width: 12
+        width: 15
         height: 22
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: character_anims_3
+      name: character_weaponRun_0
       rect:
         serializedVersion: 2
         x: 81
@@ -149,25 +149,25 @@ TextureImporter:
         width: 17
         height: 22
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: character_anims_4
+      name: character_idle_1
       rect:
         serializedVersion: 2
-        x: 3
+        x: 2
         y: 188
-        width: 12
+        width: 14
         height: 23
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: character_anims_5
+      name: character_walk_1
       rect:
         serializedVersion: 2
         x: 27
@@ -175,25 +175,25 @@ TextureImporter:
         width: 11
         height: 23
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: character_anims_6
+      name: character_run_1
       rect:
         serializedVersion: 2
         x: 52
         y: 189
-        width: 14
+        width: 15
         height: 22
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: character_anims_7
+      name: character_weaponRun_1
       rect:
         serializedVersion: 2
         x: 78
@@ -201,25 +201,25 @@ TextureImporter:
         width: 20
         height: 22
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: character_anims_8
+      name: character_idle_2
       rect:
         serializedVersion: 2
-        x: 3
+        x: 2
         y: 156
-        width: 13
+        width: 14
         height: 23
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: character_anims_9
+      name: character_walk_2
       rect:
         serializedVersion: 2
         x: 27
@@ -227,25 +227,25 @@ TextureImporter:
         width: 11
         height: 23
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: character_anims_10
+      name: character_run_2
       rect:
         serializedVersion: 2
-        x: 55
+        x: 52
         y: 156
-        width: 11
+        width: 15
         height: 22
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: character_anims_11
+      name: character_weaponRun_2
       rect:
         serializedVersion: 2
         x: 81
@@ -253,25 +253,25 @@ TextureImporter:
         width: 16
         height: 22
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: character_anims_12
+      name: character_idle_3
       rect:
         serializedVersion: 2
-        x: 3
+        x: 2
         y: 126
-        width: 13
+        width: 14
         height: 23
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: character_anims_13
+      name: character_walk_3
       rect:
         serializedVersion: 2
         x: 27
@@ -279,25 +279,25 @@ TextureImporter:
         width: 11
         height: 23
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: character_anims_14
+      name: character_run_3
       rect:
         serializedVersion: 2
-        x: 53
+        x: 52
         y: 127
-        width: 13
+        width: 15
         height: 22
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: character_anims_15
+      name: character_weaponRun_3
       rect:
         serializedVersion: 2
         x: 80
@@ -305,25 +305,25 @@ TextureImporter:
         width: 16
         height: 22
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: character_anims_16
+      name: character_idle_4
       rect:
         serializedVersion: 2
         x: 2
         y: 96
-        width: 13
+        width: 14
         height: 23
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: character_anims_17
+      name: character_walk_4
       rect:
         serializedVersion: 2
         x: 26
@@ -331,25 +331,25 @@ TextureImporter:
         width: 11
         height: 23
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: character_anims_18
+      name: character_run_4
       rect:
         serializedVersion: 2
-        x: 53
+        x: 52
         y: 96
-        width: 12
+        width: 15
         height: 22
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: character_anims_19
+      name: character_weaponRun_4
       rect:
         serializedVersion: 2
         x: 79
@@ -357,25 +357,25 @@ TextureImporter:
         width: 17
         height: 22
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: character_anims_20
+      name: character_idle_5
       rect:
         serializedVersion: 2
-        x: 3
+        x: 2
         y: 68
-        width: 12
+        width: 14
         height: 23
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: character_anims_21
+      name: character_walk_5
       rect:
         serializedVersion: 2
         x: 27
@@ -383,25 +383,25 @@ TextureImporter:
         width: 11
         height: 23
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: character_anims_22
+      name: character_run_5
       rect:
         serializedVersion: 2
         x: 52
         y: 69
-        width: 14
+        width: 15
         height: 22
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: character_anims_23
+      name: character_weaponRun_5
       rect:
         serializedVersion: 2
         x: 78
@@ -409,25 +409,25 @@ TextureImporter:
         width: 20
         height: 22
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: character_anims_24
+      name: character_idle_6
       rect:
         serializedVersion: 2
-        x: 3
+        x: 2
         y: 40
-        width: 11
+        width: 14
         height: 23
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: character_anims_25
+      name: character_walk_6
       rect:
         serializedVersion: 2
         x: 28
@@ -435,25 +435,25 @@ TextureImporter:
         width: 11
         height: 23
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: character_anims_26
+      name: character_run_6
       rect:
         serializedVersion: 2
-        x: 56
+        x: 52
         y: 40
-        width: 11
+        width: 15
         height: 22
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: character_anims_27
+      name: character_weaponRun_6
       rect:
         serializedVersion: 2
         x: 82
@@ -461,25 +461,25 @@ TextureImporter:
         width: 16
         height: 22
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: character_anims_28
+      name: character_idle_7
       rect:
         serializedVersion: 2
-        x: 3
+        x: 2
         y: 10
-        width: 11
+        width: 14
         height: 23
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: character_anims_29
+      name: character_walk_7
       rect:
         serializedVersion: 2
         x: 28
@@ -487,25 +487,25 @@ TextureImporter:
         width: 11
         height: 23
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: character_anims_30
+      name: character_run_7
       rect:
         serializedVersion: 2
-        x: 54
+        x: 52
         y: 11
-        width: 13
+        width: 15
         height: 22
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: character_anims_31
+      name: character_weaponRun_7
       rect:
         serializedVersion: 2
         x: 81
@@ -513,7 +513,7 @@ TextureImporter:
         width: 16
         height: 22
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0

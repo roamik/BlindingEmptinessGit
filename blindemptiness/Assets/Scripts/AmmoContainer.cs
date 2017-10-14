@@ -72,7 +72,7 @@ public class AmmoContainer<T> : AmmoContainerBase where T : Ammo
                 Debug.Log(string.Format("Dont have container just add container to inv!!"));
             }
         }
-        catch(System.Exception e) { };
+        catch(System.Exception e) { e = new System.Exception(); };
     }
 
     public override string ToString()

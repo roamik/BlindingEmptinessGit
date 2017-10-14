@@ -5,7 +5,7 @@ public class ArmToMouse : MonoBehaviour
 
 {
     //public Transform hitPoint;
-    public const float FLIPOFFSET = 30f;
+    public float FLIPOFFSET = 5f;
     public bool direction;
     public UnityStandardAssets._2D.PlatformerCharacter2D p_Script;
     public int posOffset;
@@ -48,22 +48,22 @@ public class ArmToMouse : MonoBehaviour
             if (angle <= angleLimit && angle > 0f + angleOffset)
             {
                 blendAngle = angle / angleLimit;
-                Debug.Log(blendAngle + "    1");
+                //Debug.Log(blendAngle + "    1");
             }
             else if (angle < 0f - angleOffset && angle >= -angleLimit)
             {
                 blendAngle = angle / angleLimit;
-                Debug.Log(blendAngle + "    4");
+                //Debug.Log(blendAngle + "    4");
             }
             else if (angle < 180f - angleOffset && angle >= flipAngleLimit)
             {
                 blendAngle = (angleLimit - (angle - flipAngleLimit)) / angleLimit;
-                Debug.Log(blendAngle + "    2");
+                //Debug.Log(blendAngle + "    2");
             }
             else if (angle > -180f + angleOffset && angle <= -flipAngleLimit)
             {
                 blendAngle = (angleLimit + (angle + flipAngleLimit)) / -angleLimit;
-                Debug.Log(blendAngle + "    3");
+                //Debug.Log(blendAngle + "    3");
             }
             else
             {
@@ -98,10 +98,9 @@ public class ArmToMouse : MonoBehaviour
 
         if (Vector2.Distance(mousePos, transform.position) > 32f)
         {
-            if (angle >= 0f + FLIPOFFSET && angle <= 90f - FLIPOFFSET || angle <= 0f - FLIPOFFSET && angle >= -90f + FLIPOFFSET)
+            if (angle >= 0f && angle <= 90f - FLIPOFFSET || angle <= 0f && angle >= -90f + FLIPOFFSET) // from left to right
             {
                 if (direction == false)
-
                 {
                     direction = true;
 
@@ -109,10 +108,9 @@ public class ArmToMouse : MonoBehaviour
                 }
             }
 
-            if (angle >= 90f - FLIPOFFSET && angle <= 180f - FLIPOFFSET || angle <= -90f + FLIPOFFSET && angle >= -180f - FLIPOFFSET)
+            if (angle >= 90f + FLIPOFFSET && angle <= 180f || angle <= -90f - FLIPOFFSET && angle >= -180f) // from right to left
             {
                 if (direction == true)
-
                 {
                     direction = false;
 

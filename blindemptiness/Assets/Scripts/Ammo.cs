@@ -25,7 +25,7 @@ public class Ammo : Item
     {
         GameObject bulletPrefab = Resources.Load("Prefabs/bulletPrefab") as GameObject;
         GameObject bulletSpawner = GameObject.Find("bulletSpawner");
-        GameObject shellSpawner = GameObject.Find("shellSpawner");
+        //GameObject shellSpawner = GameObject.Find("shellSpawner");
         List<GameObject> bulletsGameObjects = new List<GameObject>();
 
         foreach(Bullet bullet in bullets)
@@ -48,7 +48,7 @@ public class Ammo : Item
             }
             Debug.Log(blabla);
             bulletg.GetComponent<Rigidbody2D>().AddForce(blabla * bullet.bulletSpeed, ForceMode2D.Impulse);
-            GameObject.Destroy(bulletg, 2f);
+            GameObject.Destroy(bulletg, 0.05f);
             // bulletsGameObjects.Add(bulletPrefab);
         }
 
