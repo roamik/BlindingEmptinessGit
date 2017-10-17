@@ -7,7 +7,10 @@ using Assets.Scripts;
 [System.Serializable]
 public abstract class WeaponBase : Item, IVisible
 {
+    public abstract bool HasAmmo { get; }
+    public abstract AmmoContainerBase Magazine { get; }
     public ItemSound FireSound { get; set; }
+    public ItemSound NoBulletSound { get; set; }
 
     public abstract int Id
     {
@@ -18,7 +21,7 @@ public abstract class WeaponBase : Item, IVisible
         get;
     }
 
-    public abstract void Reload(ref Inventory instance, ref List<Item> inventory);
+    public abstract void Reload(ref AmmoContainerBase container);
     public abstract Ammo Fire();
     public float fireDelay = 0f;
 }

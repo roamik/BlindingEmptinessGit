@@ -8,14 +8,11 @@ namespace Assets.Scripts
 {
     public class InputManager : MonoBehaviour
     {
-        public delegate void InventoryChangeKeyDownEventHandler(EventArgs e);
-        public event InventoryChangeKeyDownEventHandler OnItemChangeKeyDown;
+        public static event Action OnItemChangeKeyDown;
 
-        public delegate void FireKeyDownEventHandler(EventArgs e);
-        public event FireKeyDownEventHandler OnFireKeyDown;
+        public static event Action OnFireKeyDown;
 
-        public delegate void ReloadKeyDownEventHandler(EventArgs e);
-        public event ReloadKeyDownEventHandler OnReloadKeyDown;
+        public static event Action OnReloadKeyDown;
 
         void Update()
         {
@@ -23,7 +20,7 @@ namespace Assets.Scripts
             {
                 if (OnItemChangeKeyDown != null)
                 {
-                    OnItemChangeKeyDown(EventArgs.Empty);
+                    OnItemChangeKeyDown();
                 }
             }
 
@@ -31,7 +28,7 @@ namespace Assets.Scripts
             {
                 if (OnFireKeyDown != null)
                 {
-                    OnFireKeyDown(EventArgs.Empty);
+                    OnFireKeyDown();
                 }
             }
 
@@ -39,12 +36,7 @@ namespace Assets.Scripts
             {
                 if (OnReloadKeyDown != null)
                 {
-                    OnReloadKeyDown(EventArgs.Empty);
-                    //if (currentItem != null && currentItem is WeaponBase)
-                    //{
-                    //    Inventory instance = this;
-                    //    (currentItem as WeaponBase).Reload(ref instance, ref inventory);
-                    //}
+                    OnReloadKeyDown();   
                 }
             }
 

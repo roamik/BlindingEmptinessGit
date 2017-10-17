@@ -7,27 +7,31 @@ using System.Linq;
 public class AmmoContainer<T> : AmmoContainerBase where T : Ammo
 {
     public List<T> ammo = new List<T>() { };
-    public int maxCount;
-    public int Count
+    public override int MaxCount { get; set; }
+    public override int Count
     {
         get
         {
             return ammo != null ? ammo.Count : 0;
         }
     }
-   
-    public virtual AmmoContainer<T> Merge(AmmoContainer<T> container)
+   public virtual AmmoContainer<T> Merge(ref AmmoContainerBase container)
     {
-        if (container.Count + this.Count > this.maxCount && Count != maxCount)
+        var containerCurrent = container as AmmoContainer<T>;
+        return Merge(ref containerCurrent);
+    }
+    public virtual AmmoContainer<T> Merge(ref AmmoContainer<T> container)
+    {
+        if (container.Count + this.Count > this.MaxCount && Count != MaxCount)
         {
-            int takeCount = this.maxCount - this.Count;
+            int takeCount = this.MaxCount - this.Count;
 
             Debug.Log(string.Format("Take {0} from 1st container {1} to 2nd container!", container.Count, this.Count));
             this.ammo.AddRange(container.ammo.Take(takeCount));
             Debug.Log(string.Format("Take {0} bullets!", takeCount));
             container.ammo.RemoveRange( 0, takeCount);         
         }
-        else if(Count == maxCount)
+        else if(Count == MaxCount)
         {
             Debug.Log(string.Format("You have a full container of bullets! You dont need reload!"));
         }
@@ -35,7 +39,8 @@ public class AmmoContainer<T> : AmmoContainerBase where T : Ammo
         {
             this.ammo.AddRange(container.ammo);
             Debug.Log(string.Format("Take all {0} bullets!", container.Count));
-            container = null;
+            //container = null;
+            container.ammo.Clear();
 
         }
         return container;
@@ -51,10 +56,10 @@ public class AmmoContainer<T> : AmmoContainerBase where T : Ammo
                 AmmoContainer<T> addeble = this;
                 while (addeble != null)
                 {
-                    AmmoContainer<T> adding = anotherItem.Where(c => c != null && c.Count < c.maxCount).FirstOrDefault();
+                    AmmoContainer<T> adding = anotherItem.Where(c => c != null && c.Count < c.MaxCount).FirstOrDefault();
                     if (adding != null)
                     {
-                        addeble = adding.Merge(addeble);
+                        addeble = adding.Merge(ref addeble);
                     }
                     else
                     {

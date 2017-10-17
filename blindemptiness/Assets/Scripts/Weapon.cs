@@ -8,6 +8,7 @@ using System;
 public class Weapon<T> : WeaponBase
     where T : Ammo
 {
+
     public float damage
     {
         get
@@ -35,9 +36,25 @@ public class Weapon<T> : WeaponBase
         }
     }
 
+    public override bool HasAmmo
+    {
+        get
+        {
+           return ammo != null && ammo.Count > 0 ;
+        }
+    }
+
+    public override AmmoContainerBase Magazine
+    {
+        get
+        {
+            return ammo;
+        }
+    }
+
     public override Ammo Fire ()
     {
-        if(ammo.Count != 0)
+        if(HasAmmo)
         {
             T fired = ammo.ammo[0];
             ammo.ammo.RemoveAt(0);
@@ -52,38 +69,37 @@ public class Weapon<T> : WeaponBase
         return null;
     }
 
-    public override void Reload(ref Inventory instance, ref List<Item> inventory)
+
+    public override void Reload(ref AmmoContainerBase container)
     {
-        int containerIndex = -1;
+        //int containerIndex = -1;
 
-        var containersToReloadBase = instance.GetAllContainers(ammo.id);
-        if (containersToReloadBase != null)
-        {
-           List<AmmoContainer<T>> containersToReload = containersToReloadBase.Select(c => c as AmmoContainer<T>).Where(c => c != null).ToList();
-            if (containersToReload != null)
-            {
-               
-                AmmoContainer<T> containerToReload = containersToReload.Where(d => d != null && d.Count != 0).FirstOrDefault();
-
-                if (containerToReload != null)
+        //var containersToReloadBase = inventory.GetAllContainers<T>(ammo.id);
+        //if (containersToReloadBase != null)
+        //{
+        //   List<AmmoContainer<T>> containersToReload = containersToReloadBase.Select(c => c as AmmoContainer<T>).Where(c => c != null).ToList();
+        //    if (containersToReload != null)
+        //    {
+        //        AmmoContainer<T> containerToReload = containersToReload.Where(d => d != null && d.Count != 0).FirstOrDefault();
+        var isContainerValid = container is AmmoContainer<T>;
+                if (isContainerValid)
                 {
-                    containerIndex = inventory.IndexOf(containerToReload);
-                    inventory[containerIndex] = ammo.Merge(containerToReload);
+                    container = ammo.Merge(ref container);
                 }
                 else
                 {
                     Debug.Log("You dont have bullets in your containers!");
                 }
-            }
-            else
-            {
-                Debug.Log("You dont have containers to reload!!! Pick one");
-            }
-        }
-        else
-        {
-            Debug.Log("You dont have containers to reload!!! Pick one");
-        }
+    //}
+        //    else
+        //    {
+        //        Debug.Log("You dont have containers to reload!!! Pick one");
+        //    }
+        //}
+        //else
+        //{
+        //    Debug.Log("You dont have containers to reload!!! Pick one");
+        //}
     }
 
     

@@ -8,14 +8,13 @@ namespace Assets.Scripts
 {
     public class PlayerAnimController : MonoBehaviour
     {
-        Inventory playerInventory;
+
         Animator animator;
         private void Start()
         {
-            playerInventory = GameObject.Find("Player_test_2").GetComponentInChildren<Inventory>();
             animator = GetComponent<Animator>();
-            playerInventory.OnAfterChange += (sender, e) => ChangePlayerAnimController();
-            playerInventory.OnAfterChange += (sender, e) => SetVisibleItemAnimControllerId(sender as Item);
+            Inventory.OnAfterChange += (item) => ChangePlayerAnimController();
+            Inventory.OnAfterChange += (item) => SetVisibleItemAnimControllerId(item);
         }
 
         void ChangePlayerAnimController()
@@ -32,7 +31,7 @@ namespace Assets.Scripts
                 }
             }
 
-            playerInventory.OnAfterChange -= (sender, e) => ChangePlayerAnimController();
+            Inventory.OnAfterChange -= (item) => ChangePlayerAnimController();
         }
 
         void SetVisibleItemAnimControllerId(Item item)

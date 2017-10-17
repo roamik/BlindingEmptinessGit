@@ -21,7 +21,7 @@ public class Ammo : Item
         }
     }
 
-    public void Fire(bool flip)
+    public void BulletFire(bool flip)
     {
         GameObject bulletPrefab = Resources.Load("Prefabs/bulletPrefab") as GameObject;
         GameObject bulletSpawner = GameObject.Find("bulletSpawner");
@@ -46,9 +46,9 @@ public class Ammo : Item
             {
                 blabla = Quaternion.AngleAxis(bulletPrefab.transform.rotation.eulerAngles.z, Vector3.forward) * Vector2.left;
             }
-            Debug.Log(blabla);
+            //Debug.Log(blabla);
             bulletg.GetComponent<Rigidbody2D>().AddForce(blabla * bullet.bulletSpeed, ForceMode2D.Impulse);
-            GameObject.Destroy(bulletg, 0.05f);
+            GameObject.Destroy(bulletg, 1f);
             // bulletsGameObjects.Add(bulletPrefab);
         }
 

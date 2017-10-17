@@ -16,17 +16,28 @@ public class Inventory : MonoBehaviour
     public Item currentItem;
     public int currentIndex;
     public List<Item> inventory = new List<Item>() { };
-    private InputManager inputManager;
 
-    public delegate void InventoryChangeEventHandler(object sender, EventArgs e);
 
-    public event InventoryChangeEventHandler OnChange;
+    public delegate void RefAction<T1, T2>(ref T1 arg1, T2 arg2);
 
-    public event InventoryChangeEventHandler OnAfterChange;
+    public delegate void RefAction<T1>(ref T1 arg1);
+
+    public static event Action<Inventory> OnChange;
+
+    public static event Action<Item> OnAfterChange;
+
+    public static event RefAction<AmmoContainerBase> OnContainerAvailable;
+
+    private event Action<Item> OnNewItemAdded;
 
     public void AddItem(Item item)
     {
         inventory.Add(item);
+
+        if(OnNewItemAdded != null)
+        {
+            OnNewItemAdded(item);
+        }
     }
 
     public List<AmmoContainerBase> GetAllContainers(int id)
@@ -50,13 +61,36 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    public List<AmmoContainer<T>> GetAllContainers<T>(int id)  where T : Ammo
+    {
+        var allContainers = inventory.Where(d => d != null && d.id == id && d is AmmoContainer<T>);
+        if (allContainers != null && allContainers.Count() != 0)
+        {
+            var allBaseContainers = allContainers.Select(g => g as AmmoContainer<T>).ToList();
+            if (allBaseContainers != null && allBaseContainers.Count != 0)
+            {
+                return allBaseContainers;
+            }
+            else
+            {
+                return null;
+            }
+        }
+        else
+        {
+            return null;
+        }
+    }
+
     // Use this for initialization
     void Start()
     {
-        inputManager = GameObject.Find("GameHandlers").GetComponentInChildren<InputManager>();
-        inputManager.OnItemChangeKeyDown += (e) => OnChange(this, e);
+        InputManager.OnItemChangeKeyDown += () => OnChange(this);
         dataBase = GameObject.Find("GameHandlers").GetComponentInChildren<ItemDataBase>();
-        OnChange += (sender, e) => ChangeInventoryItem();
+        OnChange += (inv) => ChangeInventoryItem();
+        OnAfterChange += (item) => RefreshAvailableContainer();
+        OnNewItemAdded += (item) => RefreshAvailableContainer();
+        WeaponManager.OnCantReload += (item) => RefreshAvailableContainer();
     }
 
     // Update is called once per frame
@@ -81,8 +115,7 @@ public class Inventory : MonoBehaviour
                 currentIndex++;
             }
 
-            OnAfterChange(currentItem, EventArgs.Empty);
-            int currentItemId = currentItem.id;
+            OnAfterChange(currentItem);
         }
     }
 
@@ -94,6 +127,23 @@ public class Inventory : MonoBehaviour
             {
                 inventory.Remove(item);
                 break;
+            }
+        }
+    }
+
+    void RefreshAvailableContainer()
+    {
+        if (currentItem is WeaponBase)
+        {
+            var magazine = (currentItem as WeaponBase).Magazine;
+            if (magazine != null)
+            {
+                var containers = GetAllContainers(magazine.id);
+                var container = containers != null ? containers.OrderBy(c => c.Count).FirstOrDefault(c => c.Count > 0)  : null;
+                if (OnContainerAvailable != null)
+                {
+                    OnContainerAvailable(ref container);
+                }
             }
         }
     }

@@ -15,7 +15,7 @@ public class ItemDataBase : MonoBehaviour
         {
             bulletDamage = 2f,
             bulletMass = 0.1f,
-            bulletSpeed = 4f,
+            bulletSpeed = 70f,
             bulletDispersion = 45f,
             itemSprite = new ItemImage("Sprites/", "Shotgun_Bullet")
         };
@@ -39,8 +39,8 @@ public class ItemDataBase : MonoBehaviour
         var clipShotgunMagazine = new AmmoContainer<ShotgunAmmo>()
         {
             id = 4,
-            maxCount = 10000,
-            ammo = new ShotgunAmmo[10000].Select(c => c = shotgunAmmo).ToList()       
+            MaxCount = 10,
+            ammo = new ShotgunAmmo[10].Select(c => c = shotgunAmmo).ToList()       
         };
 
         var shotgunAmmoContainer = new AmmoContainer<ShotgunAmmo>()
@@ -49,7 +49,7 @@ public class ItemDataBase : MonoBehaviour
             id = 4,
             name = "Shotgun Ammo",
             description = "Bullets for your shotgun",
-            maxCount = 10,
+            MaxCount = 10,
             ammo = new ShotgunAmmo[10].Select(c => c = shotgunAmmo).ToList()
         };
 
@@ -61,7 +61,8 @@ public class ItemDataBase : MonoBehaviour
             ammo = clipShotgunMagazine,
             fireDelay = 0.6f,
             itemSprite = new ItemImage("Sprites/", "DoubleBarrel"),
-            FireSound = new ItemSound("Sound/", "shotgunFire")
+            FireSound = new ItemSound("Sound/", "shotgunFire"),
+            NoBulletSound = new ItemSound("Sound/", "no_ammo")
         };
         #endregion
 
@@ -71,7 +72,7 @@ public class ItemDataBase : MonoBehaviour
         {
             bulletDamage = 3f,
             bulletMass = 0.1f,
-            bulletSpeed = 6f,
+            bulletSpeed = 55f,
             bulletDispersion = 5f,
             itemSprite = new ItemImage("Sprites/", "Luger_Bullet"),
         };
@@ -95,8 +96,8 @@ public class ItemDataBase : MonoBehaviour
         var clipRifleMagazine = new AmmoContainer<RifleAmmo>()
         {
             id = 3,
-            maxCount = 10000,
-            ammo = new RifleAmmo[10000].Select(c => c = rifleAmmo).ToList()
+            MaxCount = 15,
+            ammo = new RifleAmmo[15].Select(c => c = rifleAmmo).ToList()
         };
 
         var winterRifle = new RifleWeapon
@@ -107,7 +108,8 @@ public class ItemDataBase : MonoBehaviour
             ammo = clipRifleMagazine,
             itemSprite = new ItemImage("Sprites/", "WinterRifle"),
             FireSound = new ItemSound("Sound/", "shotgunFire"),
-            fireDelay = 1f
+            NoBulletSound = new ItemSound("Sound/", "no_ammo"),
+            fireDelay = 0.01f
         };
 
         var rifleAmmoContainer = new AmmoContainer<RifleAmmo>()
@@ -116,7 +118,7 @@ public class ItemDataBase : MonoBehaviour
             id = 3,
             name = "Rifle Ammo",
             description = "Rifle bullets",
-            maxCount = 20,
+            MaxCount = 20,
             ammo = new RifleAmmo[20].Select(c => c = rifleAmmo).ToList()
         };
         #endregion

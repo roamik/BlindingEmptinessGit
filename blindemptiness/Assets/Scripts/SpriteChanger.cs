@@ -9,13 +9,11 @@ namespace Assets.Scripts
     public class SpriteChanger : MonoBehaviour
     {
         SpriteRenderer spriteRenderer;
-        Inventory playerInventory;
 
         public void Start()
         {
-            playerInventory = GameObject.Find("Player_test_2").GetComponentInChildren<Inventory>();
             spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
-            playerInventory.OnAfterChange += (sender, e) => ChangeSprite(sender as Item);
+            Inventory.OnAfterChange += (item) => ChangeSprite(item);
         }
 
         void ChangeSprite(Item item)
