@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 namespace Assets.Scripts
 {
-    public class ImageChanger : MonoBehaviour
+    public class WeaponImageChanger : MonoBehaviour
     {
         Image imageRenderer;
         Text textRenderer;

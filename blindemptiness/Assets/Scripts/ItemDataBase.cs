@@ -109,7 +109,7 @@ public class ItemDataBase : MonoBehaviour
             itemSprite = new ItemImage("Sprites/", "WinterRifle"),
             FireSound = new ItemSound("Sound/", "shotgunFire"),
             NoBulletSound = new ItemSound("Sound/", "no_ammo"),
-            fireDelay = 0.01f
+            fireDelay = 0.2f
         };
 
         var rifleAmmoContainer = new AmmoContainer<RifleAmmo>()

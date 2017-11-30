@@ -1122,6 +1122,42 @@ Prefab:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 20ff0e67d5cc4ed448f65879e46f774b, type: 2}
+    - target: {fileID: 212757130609057932, guid: 77a20c27b5d677f4a89612f33a790c83,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212745032049081782, guid: 77a20c27b5d677f4a89612f33a790c83,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212320147180386974, guid: 77a20c27b5d677f4a89612f33a790c83,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212320147180386974, guid: 77a20c27b5d677f4a89612f33a790c83,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a91bf52d7846ad141bce990749fa021e,
+        type: 3}
+    - target: {fileID: 212320147180386974, guid: 77a20c27b5d677f4a89612f33a790c83,
+        type: 2}
+      propertyPath: m_Size.x
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 212320147180386974, guid: 77a20c27b5d677f4a89612f33a790c83,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 212320147180386974, guid: 77a20c27b5d677f4a89612f33a790c83,
+        type: 2}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 77a20c27b5d677f4a89612f33a790c83, type: 2}
   m_IsPrefabParent: 0
@@ -1989,7 +2025,7 @@ Camera:
   far clip plane: 10
   field of view: 60
   orthographic: 1
-  orthographic size: 50
+  orthographic size: 70
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
